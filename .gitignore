@@ -1,0 +1,5 @@
+installer/Installer/obj/
+installer/Installer/bin/
+installer/Installer.CustomActions/obj/
+installer/Installer.CustomActions/bin/
+.vs/

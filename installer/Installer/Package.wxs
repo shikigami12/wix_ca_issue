@@ -1,0 +1,23 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="Installer" Manufacturer="TODO Manufacturer" Version="1.0.0.0" UpgradeCode="eb2892c6-6226-4755-ad70-2109221dbee8">
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+	  <InstallExecuteSequence>
+		  <!--<Custom Action="DefineInstallPath" Before="AppSearch"/>
+			<InstallFinalize/>-->
+		  <Custom Action="UpdateConfigFile" After="InstallFinalize" />
+	  </InstallExecuteSequence>
+    <Feature Id="Main">
+      <ComponentGroupRef Id="ExampleComponents" />
+    </Feature>
+  </Package>
+	<Fragment>
+		<Binary Id="InstallerActions"
+				SourceFile="$(var.Installer.CustomActions.TargetDir)$(var.Installer.CustomActions.TargetName).CA.dll" />
+		<!--<CustomAction Id="DefineInstallPath" DllEntry="DefineInstallationDirectory" Execute="immediate" Return="check"
+					  BinaryRef="InstallerActions" />
+		<CustomAction Id="UpdateConfigFile" DllEntry="UpdateServiceConfig" Execute="immediate" Return="check"
+					  BinaryRef="InstallerActions" />-->
+		<CustomAction Id="UpdateConfigFile" DllEntry="CustomAction1" Execute="immediate" Return="check"
+					  BinaryRef="InstallerActions" />
+	</Fragment>
+</Wix>
